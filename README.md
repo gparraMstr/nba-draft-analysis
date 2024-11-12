@@ -24,7 +24,7 @@ Search capability uses the NBA team's **full name** (`full_name`) property in JS
 
 There are two ways to test and validate this assessment:
 
-1. **Using CodePen**: You can validate functionality directly on CodePen by pasting the contents of the files under the `dist` folder into a new CodePen project. For detailed instructions, refer to the [CodePen Deployment and Test](#codepen-deployment-and-test) section below.
+1. **Using CodePen**: You can validate functionality directly on CodePen by pasting the contents of the files under the `dist` folder into a new CodePen project. For detailed instructions, refer to the [CodePen Deployment and Test](#codepen-deployment-and-test) section below. **Code needs to be built first**.
 
 2. **Command Line Testing**: You can build and test the project from the command line using **NPM**. The project can be run, built, and tested through various NPM scripts, which are documented in the [Usage](#usage) and [Command Line Testing](#command-line-testing) sections.
 
@@ -85,12 +85,22 @@ const draftRounds = countDraftRounds(players);
 console.log(draftRounds); // Output: { '1': 2, '2': 1, 'null': 1 }
 ```
 
-### Running the Application
+### Build the Application
 
-Use NPM commands to execute the application (example script in `src/index.ts`) from command-line (see examples below). You can specify the full name of the NBA team as parameter; if not specified, then it defaults to "Golden State Warriors".
+Use NPM commands to **first build** the application:
 
 ```bash
-$ npm start
+
+$ npm run build
+
+```
+
+### Running the Application
+
+After building the application, then use NPM commands to execute the application (example script in `src/index.ts`) from command-line (see examples below). You can specify the full name of the NBA team as parameter; if not specified, then it defaults to "Golden State Warriors".
+
+```bash
+$ npm run start
 
 > start
 > node dist/bundle.js
@@ -103,7 +113,7 @@ Draft Rounds: { '1': 13, '2': 7, null: 5 }
 Example below shows how to indicate the **NBA team's full name** as an argument (i.e. `Denver Nuggets`) to get the draft analysis results:
 
 ```bash
-$ npm start -- "Denver Nuggets"
+$ npm run start -- "Denver Nuggets"
 
 > start
 > node dist/bundle.js Denver Nuggets
@@ -115,9 +125,9 @@ Draft Rounds: { '1': 16, '2': 4, null: 5 }
 
 ## Scripts
 
-- **`npm start`**: Run the main application script.
-- **`npm start -- 'Denver Nuggets'`**: Run the application script with NBA team name as parameter's value
-- **`npm test`**: Run Jest tests.
+- **`npm run start`**: Run the main application script.
+- **`npm run start -- 'Denver Nuggets'`**: Run the application script with NBA team name as parameter's value
+- **`npm run test`**: Run Jest tests.
 - **`npm run build`**: Compile TypeScript files into JavaScript (optional setup if using a build process).
 
 ## Testing
