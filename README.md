@@ -3,6 +3,25 @@
 
 This TypeScript project provides tools for analyzing and managing NBA draft data. It includes a variety of utility functions for processing player data, such as counting players by draft rounds, along with unit tests implemented in Jest to ensure code accuracy and reliability. You can view the full **assessment requirements** [here](NBA-Initial-Assessment.html).
 
+Search capability uses the NBA team's **full name** (`full_name`) property in JSON structure (see below) to filter the list of teams or perform the draft analysis.
+
+```json
+{
+  "data": [
+    {
+      "id":1,
+      "conference":"East",
+      "division":"Southeast",
+      "city":"Atlanta",
+      "name":"Hawks",
+      "full_name":"Atlanta Hawks",
+      "abbreviation":"ATL"
+    },
+    ...
+  ]
+}
+```
+
 There are two ways to test and validate this assessment:
 
 1. **Using CodePen**: You can validate functionality directly on CodePen by pasting the contents of the files under the `dist` folder into a new CodePen project. For detailed instructions, refer to the [CodePen Deployment and Test](#codepen-deployment-and-test) section below.
@@ -68,7 +87,7 @@ console.log(draftRounds); // Output: { '1': 2, '2': 1, 'null': 1 }
 
 ### Running the Application
 
-To execute the application (example script in `src/index.ts`) as shown below. Name of the team should be added as parameter as shown in example below; if not specified, then it defaults to "Golden State Warriors".
+Use NPM commands to execute the application (example script in `src/index.ts`) from command-line (see examples below). You can specify the full name of the NBA team as parameter; if not specified, then it defaults to "Golden State Warriors".
 
 ```bash
 $ npm start
@@ -81,7 +100,7 @@ Draft Rounds: { '1': 13, '2': 7, null: 5 }
 
 ```
 
-Ouput example while fetching `Denver Nuggets` draft analysis:
+Example below shows how to indicate the **NBA team's full name** as an argument (i.e. `Denver Nuggets`) to get the draft analysis results:
 
 ```bash
 $ npm start -- "Denver Nuggets"
