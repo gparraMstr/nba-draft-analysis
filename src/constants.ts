@@ -1,3 +1,4 @@
+// CACHE Expiration time to expire data in localStorage
 export const CACHE_EXPIRATION_MS = 24 * 60 * 60 * 1000; // Cache expiration time of 1 day
 
 // Base URL and headers for the API
