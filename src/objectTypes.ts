@@ -57,3 +57,8 @@ export interface Player {
    */
   draft_round: number | null;
 }
+
+export interface DraftResult {
+  team_full_name: String;
+  draft_count: Record<string, number>;
+}

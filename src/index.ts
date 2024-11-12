@@ -1,7 +1,39 @@
 import { fetchTeams, fetchPlayersByTeam } from './apiClient';
 import { countDraftRounds } from './calculateRounds';
-import { Player, Team } from './objectTypes';
+import { DraftResult, Player, Team } from './objectTypes';
 import { fetchPlayersByTeamWithCache } from './storage';
+
+/**
+ * Performs draft analysis on a specified NBA team by team name.
+ * This function fetches team and player data, filters by team name,
+ * and returns the count of players drafted in each round.
+ *
+ * @param {string} teamName - The name of the team to analyze.
+ * @returns {Promise<DraftResult>} - An object containing the team name and draft count by round.
+ */
+export async function performDraftAnalysisOnTeam(teamName: string): Promise<DraftResult | null> {
+  // Fetch all teams and find the team that matches the specified name, ignoring case.
+  const teams: Team[] = await fetchTeams();
+  const team = teams.find((t: Team) => t.full_name.toLowerCase() === teamName.toLowerCase()) as Team;
+
+  // If the team is not found, log an error and throw an exception to indicate failure.
+  if (!team) {
+    console.error("Team not found");
+    return null;
+  }
+
+  // Fetch players associated with the found team, leveraging caching if available.
+  const players: Player[] = await fetchPlayersByTeamWithCache(team.id);
+
+  // Count the number of players drafted by round (e.g., round 1, round 2, etc.).
+  const draftRounds = countDraftRounds(players);
+
+  // Return an object containing the team's full name and a draft count by round.
+  return { 
+    team_full_name: team.full_name, // Ensure the output name matches the exact team name
+    draft_count: draftRounds
+  };
+}
 
 /**
  * Main function that fetches and displays draft information for a specified team.
@@ -21,21 +53,12 @@ async function main() {
     teamName = args[0];
   }
 
-  // Fetch teams and find the requested team by name
-  const teams: Team[] = await fetchTeams();
-  const team = teams.find((t: Team) => t.full_name.toLowerCase() === teamName.toLowerCase()) as Team;
-
-  if (!team) {
-    console.error("Team not found");
-    return;
+  const results = await performDraftAnalysisOnTeam(teamName);
+  
+  if (results) {
+    console.log(`Team Name: ${results.team_full_name}`);
+    console.log('Draft Rounds:', results.draft_count);
   }
-
-  // Fetch players and count draft rounds for the selected team
-  const players: Player[] = await fetchPlayersByTeamWithCache(team.id);
-  const draftRounds = countDraftRounds(players);
-
-  console.log(`Team Name: ${team.full_name}`);
-  console.log('Draft Rounds:', draftRounds);
 }
 
 /**
