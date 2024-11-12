@@ -62,6 +62,11 @@ This project contains utility functions and data models for working with NBA pla
    npm install --save-dev jest ts-jest @types/jest
    ```
 
+4. **Build the Application**:
+   ```bash
+   npm run build
+   ```
+
 ## Usage
 
 ### Example: Counting Draft Rounds
@@ -198,7 +203,9 @@ project-root/
 
 ## CodePen deployment and test
 
-1. Create an empty PEN project.
+Files are under the `dist` folder:
+
+1. Create an empty **PEN** project.
 2. Copy contents from `bundle.js` file into **JavaScript** editor panel.
 3. Copy contents from `index.html` filde into **HTML** editor panel.
 5. Copy contents from `nba.css` filde into **CSS** editor panel.
