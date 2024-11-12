@@ -36,32 +36,6 @@ export async function performDraftAnalysisOnTeam(teamName: string): Promise<Draf
 }
 
 /**
- * Main function that fetches and displays draft information for a specified team.
- * It checks for a team name passed as a command-line argument, fetches the team
- * data, retrieves the players for that team, and displays draft round counts.
- *
- * @example
- * // Run in a Node.js environment
- * node index.js "Golden State Warriors"
- */
-async function main() {
-  let teamName = "Golden State Warriors"; // Default team name
-
-  // Check if a team name was passed as an argument
-  if (process.argv && process.argv.length > 2) {
-    const args = process.argv.slice(2);
-    teamName = args[0];
-  }
-
-  const results = await performDraftAnalysisOnTeam(teamName);
-  
-  if (results) {
-    console.log(`Team Name: ${results.team_full_name}`);
-    console.log('Draft Rounds:', results.draft_count);
-  }
-}
-
-/**
  * Handles the change event for the HTML <select> element when a team is selected.
  * This function retrieves the selected team's players and calculates the count of
  * players by draft round, then displays the draft statistics in the HTML.
@@ -133,11 +107,38 @@ function displayTeamDraftStats(team: Team, draftRounds: Record<string, number>) 
   }
 }
 
+/**
+ * Main function that fetches and displays draft information for a specified team.
+ * It checks for a team name passed as a command-line argument, fetches the team
+ * data, retrieves the players for that team, and displays draft round counts.
+ *
+ * @example
+ * // Run in a Node.js environment
+ * node index.js "Golden State Warriors"
+ */
+async function main() {
+  let teamName = "Golden State Warriors"; // Default team name
+
+  // Check if a team name was passed as an argument
+  if (process.argv && process.argv.length > 2) {
+    const args = process.argv.slice(2);
+    teamName = args[0];
+  }
+
+  const results = await performDraftAnalysisOnTeam(teamName);
+  
+  if (results) {
+    console.log(`Team Name: ${results.team_full_name}`);
+    console.log('Draft Rounds:', results.draft_count);
+  }
+}
+
 // Run the script in Node.js or in a browser environment
 if (typeof process !== 'undefined' && typeof process.argv !== 'undefined') {
   main().catch(console.error);
 }
 
+// Run on CodePen for HTML test/validation
 if (typeof document !== 'undefined') {
   initHTML();
 }
