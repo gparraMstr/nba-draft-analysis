@@ -1,6 +1,5 @@
 import { BASE_URL, HEADERS } from "./constants";
 import { Player, Team } from "./objectTypes";
-import { loadFromLocalStorage, saveToLocalStorage } from "./storage";
 
 /**
  * Fetches a list of teams with caching and error handling.

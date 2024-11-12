@@ -1,7 +1,7 @@
 import { fetchPlayersByTeam, fetchTeams } from "./apiClient";
-import { CACHE_EXPIRATION_MS } from "./constants";
 import { Player, Team } from "./objectTypes";
 
+// Global objects to be used as caching data structures
 const teamCache: Map<string, Team> = new Map();
 const playerCache: Map<number, Player[]> = new Map();
 
@@ -46,44 +46,4 @@ export async function fetchPlayersByTeamWithCache(teamId: number): Promise<Playe
     const players = await fetchPlayersByTeam(teamId);
     playerCache.set(teamId, players);
     return players;
-}
-
-/**
- * Saves data to Local Storage with an expiration timestamp.
- * This utility function allows for caching data in Local Storage with a defined expiration period.
- *
- * @param {string} key - The key under which the data will be stored.
- * @param {any} data - The data to store in Local Storage.
- *
- * @example
- * saveToLocalStorage("teamData", teamData);
- */
-export function saveToLocalStorage(key: string, data: any) {
-  const cacheItem = {
-    data,
-    timestamp: Date.now(),
-  };
-  localStorage.setItem(key, JSON.stringify(cacheItem));
-}
-
-/**
- * Loads data from Local Storage, checking if the cached data has expired.
- * If the data is expired, it removes the entry from Local Storage and returns `null`.
- *
- * @param {string} key - The key of the data to retrieve from Local Storage.
- * @returns {any | null} - The cached data if it exists and hasn't expired, or `null` if expired or missing.
- *
- * @example
- * const teamData = loadFromLocalStorage("teamData");
- */
-export function loadFromLocalStorage(key: string) {
-  const cacheItem = localStorage.getItem(key);
-  if (!cacheItem) return null;
-
-  const { data, timestamp } = JSON.parse(cacheItem);
-  if (Date.now() - timestamp > CACHE_EXPIRATION_MS) {
-    localStorage.removeItem(key); // Clear expired cache
-    return null;
-  }
-  return data;
 }
