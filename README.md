@@ -1,9 +1,13 @@
 
 # Project Name
 
-A TypeScript project for analyzing and managing NBA draft data. This project includes utility functions to process player data, such as counting players by draft rounds, and provides unit tests using Jest to ensure accuracy.
+This TypeScript project provides tools for analyzing and managing NBA draft data. It includes a variety of utility functions for processing player data, such as counting players by draft rounds, along with unit tests implemented in Jest to ensure code accuracy and reliability. You can view the full **assessment requirements** [here](NBA-Initial-Assessment.html).
 
-Review **requirements** for this assessment [here](NBA-Initial-Assessment.html).
+There are two ways to test and validate this assessment:
+
+1. **Using CodePen**: You can validate functionality directly on CodePen by pasting the contents of the files under the `dist` folder into a new CodePen project. For detailed instructions, refer to the [CodePen Deployment and Test](#codepen-deployment-and-test) section below.
+
+2. **Command Line Testing**: You can build and test the project from the command line using **NPM**. The project can be run, built, and tested through various NPM scripts, which are documented in the [Usage](#usage) and [Command Line Testing](#command-line-testing) sections.
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -12,7 +16,7 @@ Review **requirements** for this assessment [here](NBA-Initial-Assessment.html).
 - [Scripts](#scripts)
 - [Testing](#testing)
 - [Folder Structure](#folder-structure)
-- [CODEPEN deployment and test](#codepen-deployment-and-test)
+- [CodePen deployment and test](#codepen-deployment-and-test)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -160,7 +164,7 @@ project-root/
 └── README.md                         # Project documentation
 ```
 
-## CODEPEN deployment and test
+## CodePen deployment and test
 
 1. Create an empty PEN project.
 2. Copy contents from `bundle.js` file into **JavaScript** editor panel.
