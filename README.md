@@ -3,6 +3,8 @@
 
 A TypeScript project for analyzing and managing NBA draft data. This project includes utility functions to process player data, such as counting players by draft rounds, and provides unit tests using Jest to ensure accuracy.
 
+Review **requirements** for this assessment [here](NBA-Initial-Assessment.html).
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Installation](#installation)
@@ -10,6 +12,7 @@ A TypeScript project for analyzing and managing NBA draft data. This project inc
 - [Scripts](#scripts)
 - [Testing](#testing)
 - [Folder Structure](#folder-structure)
+- [CODEPEN deployment and test](#codepen-deployment-and-test)
 - [Contributing](#contributing)
 - [License](#license)
 
