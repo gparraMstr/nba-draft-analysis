@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "NodeNext",                  // Use 'es6' or 'commonjs' with Webpack
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "moduleResolution": "NodeNext",
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
