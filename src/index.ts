@@ -5,7 +5,7 @@ import { fetchPlayersByTeamWithCache } from './storage';
 
 async function main() {
   // Default team name
-  let teamName = "Houston Rockets";
+  let teamName = "Golden State Warriors";
 
   // Check if a team name was passed as an argument
   if (process.argv && process.argv.length > 2) {

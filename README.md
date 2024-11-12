@@ -21,7 +21,7 @@ This project contains utility functions and data models for working with NBA pla
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/gparraMstr/nba-draft-analysis.git
    cd your-repo-name
    ```
 
@@ -64,7 +64,27 @@ console.log(draftRounds); // Output: { '1': 2, '2': 1, 'null': 1 }
 To execute the application (example script in `src/index.ts`) as shown below. Name of the team should be added as parameter as shown in example below; if not specified, then it defaults to "Golden State Warriors".
 
 ```bash
-npm start -- "Golden State Warriors"
+$ npm start
+
+> start
+> node dist/bundle.js
+
+Team Name: Golden State Warriors
+Draft Rounds: { '1': 13, '2': 7, null: 5 }
+
+```
+
+Ouput example while fetching "Denver Nuggets" draft analysis:
+
+```bash
+$ npm start -- "Denver Nuggets"
+
+> start
+> node dist/bundle.js Denver Nuggets
+
+Team Name: Denver Nuggets
+Draft Rounds: { '1': 16, '2': 4, null: 5 }
+
 ```
 
 ## Scripts
