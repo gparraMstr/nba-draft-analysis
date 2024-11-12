@@ -74,7 +74,7 @@ Draft Rounds: { '1': 13, '2': 7, null: 5 }
 
 ```
 
-Ouput example while fetching "Denver Nuggets" draft analysis:
+Ouput example while fetching `Denver Nuggets` draft analysis:
 
 ```bash
 $ npm start -- "Denver Nuggets"
@@ -90,6 +90,7 @@ Draft Rounds: { '1': 16, '2': 4, null: 5 }
 ## Scripts
 
 - **`npm start`**: Run the main application script.
+- **`npm start -- 'Denver Nuggets'`**: Run the application script with NBA team name as parameter's value
 - **`npm test`**: Run Jest tests.
 - **`npm run build`**: Compile TypeScript files into JavaScript (optional setup if using a build process).
 
@@ -136,8 +137,8 @@ PASS  src/__tests__/countDraftRounds.test.ts
 
 ```
 project-root/
-├── dist/
-│   ├── bundle.js                     # CODEPEN JavaScript file with all logic
+├── dist/                             # CODEPEN
+│   ├── bundle.js                     # JavaScript file with all logic
 │   ├── index.html                    # HTML code to render the Draft analysis output
 │   ├── nba.css                       # CSS classes to dress the HTML output
 ├── src/
@@ -155,6 +156,17 @@ project-root/
 ├── webpack.config.json               # Webpack configuration file to generate CODEPEN JS file.
 └── README.md                         # Project documentation
 ```
+
+## CODEPEN deployment and test
+
+1. Create an empty PEN project.
+2. Copy contents from `bundle.js` file into **JavaScript** editor panel.
+3. Copy contents from `index.html` filde into **HTML** editor panel.
+5. Copy contents from `nba.css` filde into **CSS** editor panel.
+6. Verify rendering shows form with pull-down menu.
+7. Select a NBA team and wait for draft analysis count is shown
+
+![alt text](image.png)
 
 ## Contributing
 
