@@ -87,13 +87,16 @@ console.log(draftRounds); // Output: { '1': 2, '2': 1, 'null': 1 }
 
 ### Build the Application
 
-Use NPM commands to **first build** the application:
+Use NPM commands to **first build** the application prior to testing on command line or on **CodePen** environment:
 
 ```bash
 
 $ npm run build
 
 ```
+
+Successful build should override the `bundle.js` file under `dist` folder.
+
 
 ### Running the Application
 
@@ -125,10 +128,10 @@ Draft Rounds: { '1': 16, '2': 4, null: 5 }
 
 ## Scripts
 
+- **`npm run build`**: Compile TypeScript files into JavaScript for CodePen. First step to execute.
 - **`npm run start`**: Run the main application script.
 - **`npm run start -- 'Denver Nuggets'`**: Run the application script with NBA team name as parameter's value
 - **`npm run test`**: Run Jest tests.
-- **`npm run build`**: Compile TypeScript files into JavaScript (optional setup if using a build process).
 
 ## Testing
 
