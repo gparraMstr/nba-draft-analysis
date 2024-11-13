@@ -17,16 +17,18 @@ const playerCache: Map<number, Player[]> = new Map();
  * const team = await fetchTeamWithCache("Golden State Warriors");
  */
 export async function fetchTeamWithCache(teamName: string): Promise<Team | undefined> {
-    if (teamCache.has(teamName)) {
-        return teamCache.get(teamName);
+    const nameLowerCase = teamName.toLowerCase();
+
+    if (teamCache.has(nameLowerCase)) {
+        return teamCache.get(nameLowerCase);
     }
 
     if (teamCache.size === 0) {
         const teams = await fetchTeams();
-        teams.forEach(team => teamCache.set(team.full_name, team));
+        teams.forEach(team => teamCache.set(team.full_name.toLowerCase(), team));
     }
 
-    return teamCache.get(teamName);
+    return teamCache.get(nameLowerCase);
 }
 
 /**
