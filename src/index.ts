@@ -1,7 +1,7 @@
-import { fetchTeams, fetchPlayersByTeam } from './apiClient';
+import { fetchTeams } from './apiClient';
 import { countDraftRounds } from './calculateRounds';
 import { DraftResult, Player, Team } from './objectTypes';
-import { fetchPlayersByTeamWithCache } from './storage';
+import { fetchPlayersByTeamWithCache, fetchTeamWithCache } from './storage';
 
 /**
  * Performs draft analysis on a specified NBA team by team name.
@@ -13,8 +13,7 @@ import { fetchPlayersByTeamWithCache } from './storage';
  */
 export async function performDraftAnalysisOnTeam(teamName: string): Promise<DraftResult | null> {
   // Fetch all teams and find the team that matches the specified name, ignoring case.
-  const teams: Team[] = await fetchTeams();
-  const team = teams.find((t: Team) => t.full_name.toLowerCase() === teamName.toLowerCase()) as Team;
+  const team = await fetchTeamWithCache(teamName);
 
   // If the team is not found, log an error and throw an exception to indicate failure.
   if (!team) {

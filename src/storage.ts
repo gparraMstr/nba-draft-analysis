@@ -21,8 +21,10 @@ export async function fetchTeamWithCache(teamName: string): Promise<Team | undef
         return teamCache.get(teamName);
     }
 
-    const teams = await fetchTeams();
-    teams.forEach(team => teamCache.set(team.full_name, team));
+    if (teamCache.size === 0) {
+        const teams = await fetchTeams();
+        teams.forEach(team => teamCache.set(team.full_name, team));
+    }
 
     return teamCache.get(teamName);
 }
